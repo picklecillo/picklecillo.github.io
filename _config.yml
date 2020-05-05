@@ -18,11 +18,9 @@ social:
     - icon: fa-github
       link: "https://github.com/picklecillo"
 
-urls:
-    - text: About Me
-      url: /about/
-    - text: XML Feed
-      url: /feed.xml
+# urls:
+    # - text: About Me
+      # url: /about/
 
 url: "https://picklecillo.github.io"
 baseurl: ""
@@ -33,6 +31,8 @@ markdown: kramdown
 gems:
   - jekyll-paginate
   - jekyll-gist
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 compress_html:
   clippings: all
