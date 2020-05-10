@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Python numberize until undefined or infinity numbers"
-date:   2020-05-02 20:32:04 +0700
+<!-- date:   2020-05-02 20:32:04 +0700 -->
 categories: [python]
 ---
 
