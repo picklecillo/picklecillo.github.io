@@ -6,125 +6,146 @@
 @plugin "@tailwindcss/typography";
 
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
+  themes: brut --default;
 }
 
-/* Paper + ink light theme with a single vivid green accent */
+/* Single dark neubrutalist theme: charcoal ink, cream chalk lines, hard green + loud yellow */
 @plugin "daisyui/theme" {
-  name: "light";
+  name: "brut";
   default: true;
-  color-scheme: light;
-  --color-base-100: oklch(98.5% 0.004 95);
-  --color-base-200: oklch(95.5% 0.006 95);
-  --color-base-300: oklch(90% 0.008 95);
-  --color-base-content: oklch(22% 0.01 260);
-  --color-primary: oklch(56% 0.17 148);
-  --color-primary-content: oklch(98% 0.01 148);
-  --color-secondary: oklch(30% 0.02 260);
-  --color-secondary-content: oklch(97% 0.005 95);
-  --color-accent: oklch(56% 0.17 148);
-  --color-accent-content: oklch(98% 0.01 148);
-  --color-neutral: oklch(25% 0.01 260);
-  --color-neutral-content: oklch(96% 0.005 95);
-  --color-info: oklch(62% 0.12 235);
-  --color-info-content: oklch(98% 0.01 235);
-  --color-success: oklch(56% 0.17 148);
-  --color-success-content: oklch(98% 0.01 148);
-  --color-warning: oklch(75% 0.15 80);
-  --color-warning-content: oklch(25% 0.05 80);
-  --color-error: oklch(58% 0.2 25);
-  --color-error-content: oklch(97% 0.01 25);
-  --radius-selector: 0.25rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.5rem;
-  --border: 1px;
-  --depth: 0;
-  --noise: 0;
-}
-
-/* Deep ink dark theme, same green burning brighter */
-@plugin "daisyui/theme" {
-  name: "dark";
-  prefersdark: true;
   color-scheme: dark;
-  --color-base-100: oklch(17% 0.012 260);
-  --color-base-200: oklch(21% 0.014 260);
-  --color-base-300: oklch(26% 0.016 260);
-  --color-base-content: oklch(90% 0.008 95);
-  --color-primary: oklch(78% 0.2 148);
-  --color-primary-content: oklch(18% 0.05 148);
-  --color-secondary: oklch(85% 0.01 95);
-  --color-secondary-content: oklch(20% 0.01 260);
-  --color-accent: oklch(78% 0.2 148);
-  --color-accent-content: oklch(18% 0.05 148);
-  --color-neutral: oklch(28% 0.014 260);
-  --color-neutral-content: oklch(92% 0.006 95);
-  --color-info: oklch(72% 0.12 235);
-  --color-info-content: oklch(20% 0.04 235);
-  --color-success: oklch(78% 0.2 148);
-  --color-success-content: oklch(18% 0.05 148);
-  --color-warning: oklch(82% 0.15 85);
-  --color-warning-content: oklch(25% 0.05 85);
-  --color-error: oklch(68% 0.18 25);
-  --color-error-content: oklch(18% 0.04 25);
-  --radius-selector: 0.25rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.5rem;
-  --border: 1px;
+  --color-base-100: oklch(19% 0.014 260);
+  --color-base-200: oklch(23% 0.016 260);
+  --color-base-300: oklch(29% 0.018 260);
+  --color-base-content: oklch(94% 0.02 95);
+  --color-primary: oklch(78% 0.21 145);
+  --color-primary-content: oklch(17% 0.014 260);
+  --color-secondary: oklch(86% 0.16 95);
+  --color-secondary-content: oklch(17% 0.014 260);
+  --color-accent: oklch(74% 0.19 340);
+  --color-accent-content: oklch(17% 0.014 260);
+  --color-neutral: oklch(94% 0.02 95);
+  --color-neutral-content: oklch(17% 0.014 260);
+  --color-info: oklch(74% 0.13 235);
+  --color-info-content: oklch(17% 0.014 260);
+  --color-success: oklch(78% 0.21 145);
+  --color-success-content: oklch(17% 0.014 260);
+  --color-warning: oklch(84% 0.16 80);
+  --color-warning-content: oklch(17% 0.014 260);
+  --color-error: oklch(66% 0.22 27);
+  --color-error-content: oklch(17% 0.014 260);
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
+  --border: 2px;
   --depth: 0;
   --noise: 0;
 }
 
 @theme {
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-display: "Archivo Black", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Faint blueprint grid behind the hero */
-.hero-grid {
-  background-image:
-    linear-gradient(color-mix(in oklch, var(--color-base-content) 6%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in oklch, var(--color-base-content) 6%, transparent) 1px, transparent 1px);
-  background-size: 2.5rem 2.5rem;
-  mask-image: linear-gradient(to bottom, black 60%, transparent);
+/* --- Brutalist primitives ----------------------------------------------- */
+
+@utility brut-border {
+  border: 2px solid var(--color-base-content);
 }
 
-/* ghchart ships light-mode colors; invert + hue-rotate lands it back on green for dark */
-[data-theme="dark"] .gh-chart {
+@utility brut-shadow {
+  box-shadow: 6px 6px 0 0 var(--color-base-content);
+}
+
+@utility brut-shadow-sm {
+  box-shadow: 4px 4px 0 0 var(--color-base-content);
+}
+
+@utility brut-shadow-none {
+  box-shadow: 0 0 0 0 var(--color-base-content);
+}
+
+/* Card that physically presses down when hovered */
+.brut-press {
+  transition: translate 0.1s ease, box-shadow 0.1s ease;
+}
+.brut-press:hover {
+  translate: 4px 4px;
+  box-shadow: 0 0 0 0 var(--color-base-content);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brut-press {
+    transition: none;
+  }
+}
+
+/* Halftone dot field behind the hero */
+.hero-dots {
+  background-image: radial-gradient(
+    color-mix(in oklch, var(--color-base-content) 22%, transparent) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 1.4rem 1.4rem;
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
+}
+
+/* Yellow slab section labels: 01 / EXPERIENCE */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  color: var(--color-secondary-content);
+  background: var(--color-secondary);
+  border: 2px solid var(--color-base-content);
+  box-shadow: 3px 3px 0 0 var(--color-base-content);
+}
+
+/* Highlighter strike behind key words — semi-transparent so cream text stays readable */
+.hl {
+  --hl-color: color-mix(in oklch, var(--color-primary) 45%, transparent);
+  background: linear-gradient(transparent 55%, var(--hl-color) 55%, var(--hl-color) 92%, transparent 92%);
+}
+.hl-yellow {
+  --hl-color: color-mix(in oklch, var(--color-secondary) 40%, transparent);
+  background: linear-gradient(transparent 55%, var(--hl-color) 55%, var(--hl-color) 92%, transparent 92%);
+}
+
+/* Hover inversion for highlighted links; hover:bg-* utilities lose to the
+   unlayered background shorthand above, so it must live here */
+a.hl:hover,
+a.hl-yellow:hover {
+  background: var(--color-base-content);
+  color: var(--color-base-100);
+}
+
+/* ghchart ships light-mode colors; invert flips the empty cells dark and the
+   hue-rotate lands the filled cells back on green */
+.gh-chart {
   filter: invert(0.88) hue-rotate(180deg) saturate(1.4);
 }
 
-/* Numbered section labels: 01 / experience */
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-}
+/* --- Code blocks --------------------------------------------------------- */
 
-/* Pygments token colors, keyed off the active daisyUI theme */
-.highlight {
-  --syn-keyword: oklch(50% 0.19 300);
-  --syn-string: oklch(52% 0.15 148);
-  --syn-comment: oklch(55% 0.02 260);
-  --syn-number: oklch(52% 0.15 55);
-  --syn-name: oklch(48% 0.13 235);
+/* Pygments tokens on the typography plugin's dark pre background */
+.highlight .k, .highlight .kn, .highlight .kd, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .ow { color: oklch(78% 0.15 300); }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sd, .highlight .se, .highlight .si, .highlight .sx { color: oklch(80% 0.16 148); }
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .ch { color: oklch(62% 0.02 260); font-style: italic; }
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo { color: oklch(80% 0.13 55); }
+.highlight .nf, .highlight .nc, .highlight .nd, .highlight .fm, .highlight .nb { color: oklch(78% 0.11 235); }
+.highlight .gp { color: oklch(62% 0.02 260); user-select: none; }
+
+/* Square-cornered, hard-edged code blocks inside prose */
+.prose pre {
+  border: 2px solid var(--color-base-content);
+  border-radius: 0;
+  box-shadow: 5px 5px 0 0 var(--color-base-content);
 }
-[data-theme="dark"] .highlight {
-  --syn-keyword: oklch(78% 0.15 300);
-  --syn-string: oklch(80% 0.16 148);
-  --syn-comment: oklch(60% 0.02 260);
-  --syn-number: oklch(80% 0.13 55);
-  --syn-name: oklch(78% 0.11 235);
-}
-.highlight .k, .highlight .kn, .highlight .kd, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .ow { color: var(--syn-keyword); }
-.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sd, .highlight .se, .highlight .si, .highlight .sx { color: var(--syn-string); }
-.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .ch { color: var(--syn-comment); font-style: italic; }
-.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo { color: var(--syn-number); }
-.highlight .nf, .highlight .nc, .highlight .nd, .highlight .fm, .highlight .nb { color: var(--syn-name); }
-.highlight .gp { color: var(--syn-comment); user-select: none; }
 
 html {
   scroll-behavior: smooth;

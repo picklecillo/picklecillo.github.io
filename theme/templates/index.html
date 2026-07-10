@@ -7,33 +7,35 @@
 {% set posts = articles | selectattr('category.slug', 'equalto', 'blog') | list %}
 
 <!-- ================================ hero ================================ -->
-<section id="about" class="relative overflow-hidden">
-  <div class="hero-grid absolute inset-0" aria-hidden="true"></div>
-  <div class="relative mx-auto max-w-5xl px-4 sm:px-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
+<section id="about" class="relative overflow-hidden border-b-[3px] border-base-content">
+  <div class="hero-dots absolute inset-0" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-5xl px-4 sm:px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
     <div class="flex flex-col-reverse md:flex-row items-start md:items-center gap-10 md:gap-16">
       <div class="flex-1">
-        <p class="font-mono text-sm text-primary mb-4">// hello, i&rsquo;m</p>
-        <h1 class="font-display text-5xl sm:text-7xl leading-[1.05] tracking-tight">
-          {{ AUTHOR }}<span class="text-primary">.</span><br>
-          <span class="italic text-base-content/70">I build software.</span>
+        <p class="section-label mb-6">// hello, i&rsquo;m</p>
+        <h1 class="font-display text-5xl sm:text-7xl uppercase leading-[0.95] tracking-tight">
+          {{ AUTHOR.split(' ')[0] }}<br>
+          {{ AUTHOR.split(' ')[1:] | join(' ') }}<span class="text-primary">.</span>
         </h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-base-content/80">
+        <p class="mt-4 font-mono text-lg font-semibold uppercase tracking-wide">
+          <span class="hl">software engineer</span>
+        </p>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed">
           {{ BIO }}
         </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#contact" class="btn btn-primary font-mono">
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href="#contact" class="brut-border brut-shadow brut-press inline-flex items-center gap-2 bg-primary text-primary-content px-5 py-3 font-mono font-semibold uppercase">
             get in touch {{ ic.icon("arrow", "w-4 h-4") }}
           </a>
-          <a href="https://github.com/{{ GITHUB_USERNAME }}" target="_blank" rel="noopener" class="btn btn-outline font-mono">
+          <a href="https://github.com/{{ GITHUB_USERNAME }}" target="_blank" rel="noopener" class="brut-border brut-shadow brut-press inline-flex items-center gap-2 bg-base-100 px-5 py-3 font-mono font-semibold uppercase">
             {{ ic.icon("github", "w-4 h-4") }} github
           </a>
         </div>
       </div>
       <div class="shrink-0">
-        <div class="avatar">
-          <div class="w-32 sm:w-44 rounded-box border-2 border-primary ring-4 ring-base-300 ring-offset-4 ring-offset-base-100">
-            <img src="https://github.com/{{ GITHUB_USERNAME }}.png" alt="Avatar of {{ AUTHOR }}" width="176" height="176">
-          </div>
+        <div class="brut-border brut-shadow -rotate-2 bg-base-100 p-2">
+          <img class="w-36 sm:w-48 grayscale contrast-125" src="https://github.com/{{ GITHUB_USERNAME }}.png"
+               alt="Avatar of {{ AUTHOR }}" width="192" height="192">
         </div>
       </div>
     </div>
@@ -41,74 +43,77 @@
 </section>
 
 <!-- ============================= experience ============================= -->
-<section id="experience" class="border-t border-base-300 bg-base-200/40 scroll-mt-16">
+<section id="experience" class="scroll-mt-20 border-b-[3px] border-base-content bg-base-200">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 py-20">
-    <p class="section-label mb-2">01 / experience</p>
-    <h2 class="font-display text-4xl mb-12">Where I&rsquo;ve worked</h2>
+    <p class="section-label mb-4">01 / experience</p>
+    <h2 class="font-display text-4xl sm:text-5xl uppercase mb-14">Where I&rsquo;ve<br>worked</h2>
 
-    <ul class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
+    <div class="space-y-8">
       {% for job in EXPERIENCE %}
-      <li>
-        {% if not loop.first %}<hr class="bg-base-300">{% endif %}
-        <div class="timeline-middle">
-          <span class="flex h-3 w-3 rounded-full {% if loop.first %}bg-primary{% else %}bg-base-300{% endif %}"></span>
+      <div class="grid grid-cols-[auto_1fr] gap-5 sm:gap-8">
+        <div class="font-display text-4xl sm:text-6xl text-base-content/15 select-none leading-none pt-4" aria-hidden="true">
+          {{ "%02d" | format(loop.index) }}
         </div>
-        <div class="{% if loop.index is odd %}timeline-start md:text-end{% else %}timeline-end{% endif %} mb-10 md:mx-4">
-          <time class="font-mono text-xs text-base-content/60">{{ job.start }} — {{ job.end }}</time>
-          <h3 class="text-lg font-semibold mt-1">
-            {{ job.role }}
-            <span class="text-base-content/60 font-normal">@ <a href="{{ job.url }}" target="_blank" rel="noopener" class="link link-hover text-primary">{{ job.company }}</a></span>
-          </h3>
-          <p class="mt-2 text-base-content/80 leading-relaxed">{{ job.summary }}</p>
-          <div class="mt-3 flex flex-wrap gap-1.5 {% if loop.index is odd %}md:justify-end{% endif %}">
+        <article class="brut-border brut-shadow bg-base-100 p-6 sm:p-7">
+          <div class="flex flex-wrap items-baseline justify-between gap-2">
+            <h3 class="font-display text-xl sm:text-2xl uppercase">{{ job.role }}</h3>
+            <time class="font-mono text-xs font-semibold bg-base-content text-base-100 px-2 py-1">{{ job.start }} — {{ job.end }}</time>
+          </div>
+          <p class="mt-1 font-mono font-medium">
+            @ <a href="{{ job.url }}" target="_blank" rel="noopener" class="hl-yellow">{{ job.company }}</a>
+          </p>
+          <p class="mt-4 leading-relaxed">{{ job.summary }}</p>
+          <div class="mt-5 flex flex-wrap gap-2">
             {% for tech in job.stack %}
-            <span class="badge badge-ghost font-mono text-xs">{{ tech }}</span>
+            <span class="brut-border bg-base-200 px-2 py-0.5 font-mono text-xs font-medium">{{ tech }}</span>
             {% endfor %}
           </div>
-        </div>
-        {% if not loop.last %}<hr class="bg-base-300">{% endif %}
-      </li>
+        </article>
+      </div>
       {% endfor %}
-    </ul>
+    </div>
   </div>
 </section>
 
 <!-- ============================== projects ============================== -->
-<section id="projects" class="border-t border-base-300 scroll-mt-16">
+<section id="projects" class="scroll-mt-20 border-b-[3px] border-base-content">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 py-20">
-    <div class="flex items-end justify-between mb-12 gap-4">
+    <div class="flex flex-wrap items-end justify-between mb-14 gap-6">
       <div>
-        <p class="section-label mb-2">02 / projects</p>
-        <h2 class="font-display text-4xl">Selected work</h2>
+        <p class="section-label mb-4">02 / projects</p>
+        <h2 class="font-display text-4xl sm:text-5xl uppercase">Selected<br>work</h2>
       </div>
-      <a href="{{ SITEURL }}/projects/" class="btn btn-ghost font-mono text-sm text-primary">
+      <a href="{{ SITEURL }}/projects/" class="brut-border brut-shadow-sm brut-press inline-flex items-center gap-2 bg-secondary text-secondary-content px-4 py-2.5 font-mono text-sm font-semibold uppercase">
         all projects {{ ic.icon("arrow", "w-4 h-4") }}
       </a>
     </div>
 
-    <div class="grid gap-6 sm:grid-cols-2">
+    <div class="grid gap-8 sm:grid-cols-2">
       {% for project in featured %}
-      <article class="card border border-base-300 bg-base-100 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-lg">
-        <div class="card-body">
-          <div class="flex items-start justify-between">
-            <h3 class="card-title font-display text-2xl">
-              <a href="{{ SITEURL }}/{{ project.url }}" class="link link-hover">{{ project.title }}</a>
-            </h3>
-            <div class="flex gap-1 shrink-0">
-              {% if project.repo %}
-              <a href="{{ project.repo }}" target="_blank" rel="noopener" class="btn btn-ghost btn-square btn-sm" aria-label="Repository">{{ ic.icon("github", "w-4 h-4") }}</a>
-              {% endif %}
-              {% if project.demo %}
-              <a href="{{ project.demo }}" target="_blank" rel="noopener" class="btn btn-ghost btn-square btn-sm" aria-label="Live demo">{{ ic.icon("external", "w-4 h-4") }}</a>
-              {% endif %}
-            </div>
+      <article class="brut-border brut-shadow brut-press bg-base-100 flex flex-col">
+        <div class="flex items-center justify-between border-b-2 border-base-content bg-primary text-primary-content px-5 py-3">
+          <h3 class="font-display text-lg uppercase truncate">
+            <a href="{{ SITEURL }}/{{ project.url }}">{{ project.title.split('—')[0].strip() }}</a>
+          </h3>
+          <div class="flex gap-2 shrink-0 ml-3">
+            {% if project.repo %}
+            <a href="{{ project.repo }}" target="_blank" rel="noopener" class="hover:-translate-y-0.5 transition-transform" aria-label="Repository">{{ ic.icon("github", "w-5 h-5") }}</a>
+            {% endif %}
+            {% if project.demo %}
+            <a href="{{ project.demo }}" target="_blank" rel="noopener" class="hover:-translate-y-0.5 transition-transform" aria-label="Live demo">{{ ic.icon("external", "w-5 h-5") }}</a>
+            {% endif %}
           </div>
-          <p class="text-base-content/80 leading-relaxed">{{ project.summary }}</p>
-          <div class="card-actions mt-2">
+        </div>
+        <div class="p-5 flex-1 flex flex-col gap-4">
+          <p class="leading-relaxed flex-1">{{ project.summary }}</p>
+          <div class="flex flex-wrap gap-2">
             {% for tag in project.tags %}
-            <span class="badge badge-outline font-mono text-xs">{{ tag }}</span>
+            <span class="brut-border bg-base-200 px-2 py-0.5 font-mono text-xs font-medium">{{ tag }}</span>
             {% endfor %}
           </div>
+          <a href="{{ SITEURL }}/{{ project.url }}" class="font-mono text-sm font-semibold uppercase underline decoration-2 underline-offset-4 hover:bg-secondary hover:text-secondary-content self-start">
+            read writeup →
+          </a>
         </div>
       </article>
       {% endfor %}
@@ -118,90 +123,88 @@
 
 <!-- =============================== writing ============================== -->
 {% if posts %}
-<section id="writing" class="border-t border-base-300 bg-base-200/40 scroll-mt-16">
+<section id="writing" class="scroll-mt-20 border-b-[3px] border-base-content bg-base-200">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 py-20">
-    <div class="flex items-end justify-between mb-12 gap-4">
+    <div class="flex flex-wrap items-end justify-between mb-14 gap-6">
       <div>
-        <p class="section-label mb-2">03 / writing</p>
-        <h2 class="font-display text-4xl">Recent posts</h2>
+        <p class="section-label mb-4">03 / writing</p>
+        <h2 class="font-display text-4xl sm:text-5xl uppercase">Recent<br>posts</h2>
       </div>
-      <a href="{{ SITEURL }}/blog/" class="btn btn-ghost font-mono text-sm text-primary">
+      <a href="{{ SITEURL }}/blog/" class="brut-border brut-shadow-sm brut-press inline-flex items-center gap-2 bg-secondary text-secondary-content px-4 py-2.5 font-mono text-sm font-semibold uppercase">
         all posts {{ ic.icon("arrow", "w-4 h-4") }}
       </a>
     </div>
 
-    <ul class="divide-y divide-base-300 border-y border-base-300">
+    <div class="brut-border brut-shadow bg-base-100 divide-y-2 divide-base-content">
       {% for post in posts[:3] %}
-      <li>
-        <a href="{{ SITEURL }}/{{ post.url }}" class="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-5 transition-colors hover:bg-base-100 px-2 -mx-2">
-          <time class="font-mono text-xs text-base-content/60 sm:w-28 shrink-0">{{ post.date | strftime(DEFAULT_DATE_FORMAT) }}</time>
-          <span class="text-lg font-medium group-hover:text-primary transition-colors">{{ post.title }}</span>
-        </a>
-      </li>
+      <a href="{{ SITEURL }}/{{ post.url }}" class="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 px-5 py-5 hover:bg-secondary hover:text-secondary-content">
+        <time class="font-mono text-xs font-semibold sm:w-28 shrink-0">{{ post.date | strftime(DEFAULT_DATE_FORMAT) }}</time>
+        <span class="flex-1 text-lg font-semibold">{{ post.title }}</span>
+        <span class="hidden sm:block self-center group-hover:translate-x-1 transition-transform">{{ ic.icon("arrow", "w-5 h-5") }}</span>
+      </a>
       {% endfor %}
-    </ul>
+    </div>
   </div>
 </section>
 {% endif %}
 
 <!-- =============================== github =============================== -->
-<section id="github" class="border-t border-base-300 scroll-mt-16">
+<section id="github" class="scroll-mt-20 border-b-[3px] border-base-content">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 py-20">
-    <p class="section-label mb-2">04 / github</p>
-    <h2 class="font-display text-4xl mb-4">A year of commits</h2>
-    <p class="text-base-content/70 mb-10 max-w-xl">
+    <p class="section-label mb-4">04 / github</p>
+    <h2 class="font-display text-4xl sm:text-5xl uppercase mb-4">A year of<br>commits</h2>
+    <p class="mb-10 max-w-xl leading-relaxed">
       Contribution activity for
-      <a href="https://github.com/{{ GITHUB_USERNAME }}" target="_blank" rel="noopener" class="link link-hover text-primary font-mono">@{{ GITHUB_USERNAME }}</a>,
+      <a href="https://github.com/{{ GITHUB_USERNAME }}" target="_blank" rel="noopener" class="font-mono font-semibold hl">@{{ GITHUB_USERNAME }}</a>,
       straight from the source.
     </p>
-    <div class="card border border-base-300 bg-base-100 overflow-x-auto">
-      <div class="card-body items-center min-w-fit">
-        <img class="gh-chart w-full max-w-3xl" src="https://ghchart.rshah.org/40a02b/{{ GITHUB_USERNAME }}"
-             alt="GitHub contribution chart for {{ GITHUB_USERNAME }}" loading="lazy">
-      </div>
+    <div class="brut-border brut-shadow bg-base-200 p-5 sm:p-7 overflow-x-auto">
+      <img class="gh-chart w-full min-w-[640px] max-w-3xl mx-auto" src="https://ghchart.rshah.org/40a02b/{{ GITHUB_USERNAME }}"
+           alt="GitHub contribution chart for {{ GITHUB_USERNAME }}" loading="lazy">
     </div>
   </div>
 </section>
 
 <!-- =============================== contact ============================== -->
-<section id="contact" class="border-t border-base-300 bg-base-200/40 scroll-mt-16">
+<section id="contact" class="scroll-mt-20 bg-base-200">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 py-20">
     <div class="grid gap-12 md:grid-cols-2">
       <div>
-        <p class="section-label mb-2">05 / contact</p>
-        <h2 class="font-display text-4xl mb-4">Say hello</h2>
-        <p class="text-base-content/70 leading-relaxed max-w-md">
+        <p class="section-label mb-4">05 / contact</p>
+        <h2 class="font-display text-4xl sm:text-5xl uppercase mb-6">Say<br>hello</h2>
+        <p class="leading-relaxed max-w-md">
           Have a project in mind, a role to discuss, or just want to talk shop?
-          Drop a message here or reach me directly at
-          <a href="mailto:{{ CONTACT_EMAIL }}" class="link link-hover text-primary font-mono">{{ CONTACT_EMAIL }}</a>.
+          Drop a message with the form and it lands
+          <span class="hl-yellow font-semibold">straight in my inbox</span>.
         </p>
-        <div class="mt-8 flex gap-2">
+        <div class="mt-9 flex gap-4">
           {% for link in SOCIAL_LINKS %}
-          <a href="{{ link.url }}" class="btn btn-outline btn-square" aria-label="{{ link.name }}"{% if not link.url.startswith('mailto:') %} target="_blank" rel="noopener"{% endif %}>
-            {{ ic.icon(link.icon) }}
+          <a href="{{ link.url }}" class="brut-border brut-shadow-sm brut-press inline-flex bg-base-100 text-base-content p-3" aria-label="{{ link.name }}"{% if not link.url.startswith('mailto:') %} target="_blank" rel="noopener"{% endif %}>
+            {{ ic.icon(link.icon, "w-6 h-6") }}
           </a>
           {% endfor %}
         </div>
       </div>
 
-      <form action="https://formspree.io/f/{{ FORMSPREE_ID }}" method="POST" class="card border border-base-300 bg-base-100">
-        <div class="card-body gap-4">
-          <label class="floating-label">
-            <span>Name</span>
-            <input type="text" name="name" required placeholder="Your name" class="input input-bordered w-full font-mono">
-          </label>
-          <label class="floating-label">
-            <span>Email</span>
-            <input type="email" name="email" required placeholder="you@example.com" class="input input-bordered w-full font-mono">
-          </label>
-          <label class="floating-label">
-            <span>Message</span>
-            <textarea name="message" required rows="5" placeholder="What's on your mind?" class="textarea textarea-bordered w-full font-mono"></textarea>
-          </label>
-          <button type="submit" class="btn btn-primary font-mono mt-2">
-            send message {{ ic.icon("arrow", "w-4 h-4") }}
-          </button>
+      <form action="https://formspree.io/f/{{ FORMSPREE_ID }}" method="POST" class="brut-border brut-shadow bg-base-100 p-6 sm:p-7 flex flex-col gap-5">
+        <div class="flex flex-col gap-1.5">
+          <label for="cf-name" class="font-mono text-xs font-semibold uppercase tracking-wider">Name</label>
+          <input id="cf-name" type="text" name="name" required placeholder="Your name"
+                 class="brut-border w-full bg-base-200 px-3 py-2.5 font-mono placeholder:text-base-content/40 focus:outline-none focus:brut-shadow-sm focus:bg-secondary/30">
         </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="cf-email" class="font-mono text-xs font-semibold uppercase tracking-wider">Email</label>
+          <input id="cf-email" type="email" name="email" required placeholder="you@example.com"
+                 class="brut-border w-full bg-base-200 px-3 py-2.5 font-mono placeholder:text-base-content/40 focus:outline-none focus:brut-shadow-sm focus:bg-secondary/30">
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="cf-message" class="font-mono text-xs font-semibold uppercase tracking-wider">Message</label>
+          <textarea id="cf-message" name="message" required rows="5" placeholder="What's on your mind?"
+                    class="brut-border w-full bg-base-200 px-3 py-2.5 font-mono placeholder:text-base-content/40 focus:outline-none focus:brut-shadow-sm focus:bg-secondary/30"></textarea>
+        </div>
+        <button type="submit" class="brut-border brut-shadow brut-press inline-flex items-center justify-center gap-2 bg-primary text-primary-content px-5 py-3 font-mono font-semibold uppercase mt-1">
+          send message {{ ic.icon("arrow", "w-4 h-4") }}
+        </button>
       </form>
     </div>
   </div>

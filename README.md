@@ -58,7 +58,8 @@ and render as icon links.
 ## Site data
 
 Bio, experience timeline, social links, and contact email live in
-`pelicanconf.py` (`BIO`, `EXPERIENCE`, `SOCIAL_LINKS`, `CONTACT_EMAIL`).
+`pelicanconf.py` (`BIO`, `EXPERIENCE`, `SOCIAL_LINKS`). No email address is
+published anywhere on the site — contact goes through the Formspree form.
 
 ## Contact form
 
@@ -77,6 +78,8 @@ renamed or moved to `picklecillo.github.io`, update it there.
 
 ## Theming
 
-Two custom daisyUI themes (`light`/`dark`) are defined in `src/css/main.css` —
-edit the OKLCH variables there to retheme. The navbar toggle persists the choice
-in `localStorage` and defaults to the system preference.
+A single neubrutalist daisyUI theme (`brut`) is defined in `src/css/main.css` —
+cream base, near-black ink, hard green primary and yellow secondary, zero border
+radius. Edit the OKLCH variables there to retheme. The brutalist primitives
+(`brut-border`, `brut-shadow`, `brut-press`, `section-label`, `hl`) live in the
+same file.

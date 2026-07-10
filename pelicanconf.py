@@ -10,7 +10,7 @@ ARTICLE_PATHS = ["blog", "projects"]
 PAGE_PATHS = ["pages"]
 STATIC_PATHS = ["extra"]
 EXTRA_PATH_METADATA = {
-    "extra/favicon.svg": {"path": "favicon.svg"},
+    "extra/favicon.ico": {"path": "favicon.ico"},
 }
 
 TIMEZONE = "America/Mexico_City"
@@ -61,7 +61,6 @@ RELATIVE_URLS = True
 
 CURRENT_YEAR = date.today().year
 GITHUB_USERNAME = "picklecillo"
-CONTACT_EMAIL = "gael.espinosa.h@gmail.com"
 
 # Create a form at https://formspree.io and paste its ID here (e.g. "mqkvyzab")
 FORMSPREE_ID = "YOUR_FORM_ID"
@@ -77,8 +76,7 @@ ROLE = "Software Engineer"
 
 SOCIAL_LINKS = [
     {"name": "GitHub", "url": "https://github.com/picklecillo", "icon": "github"},
-    {"name": "LinkedIn", "url": "https://www.linkedin.com/in/your-profile", "icon": "linkedin"},
-    {"name": "Email", "url": "mailto:gael.espinosa.h@gmail.com", "icon": "email"},
+    {"name": "LinkedIn", "url": "https://www.linkedin.com/in/gaelespinosa/", "icon": "linkedin"},
 ]
 
 EXPERIENCE = [

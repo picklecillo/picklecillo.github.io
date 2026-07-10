@@ -6,32 +6,32 @@
 
 {% block content %}
 <article class="mx-auto max-w-3xl px-4 sm:px-6 py-16 sm:py-20">
-  <a href="{{ SITEURL }}/{{ article.category.slug }}/" class="btn btn-ghost btn-sm font-mono text-primary mb-8 -ml-3">
+  <a href="{{ SITEURL }}/{{ article.category.slug }}/" class="brut-border brut-shadow-sm brut-press inline-flex items-center gap-2 bg-secondary text-secondary-content px-3 py-1.5 font-mono text-sm font-semibold uppercase mb-10">
     <span class="rotate-180 inline-block">{{ ic.icon("arrow", "w-4 h-4") }}</span> {{ article.category.slug }}
   </a>
 
   <header class="mb-10">
-    <p class="font-mono text-xs text-base-content/60 mb-3">
-      <time datetime="{{ article.date.isoformat() }}">{{ article.date | strftime(DEFAULT_DATE_FORMAT) }}</time>
-      {% if article.modified %} · updated <time datetime="{{ article.modified.isoformat() }}">{{ article.modified | strftime(DEFAULT_DATE_FORMAT) }}</time>{% endif %}
+    <p class="font-mono text-xs font-semibold uppercase tracking-wider mb-4">
+      <time datetime="{{ article.date.isoformat() }}" class="bg-base-content text-base-100 px-2 py-1">{{ article.date | strftime(DEFAULT_DATE_FORMAT) }}</time>
+      {% if article.modified %} <span class="ml-2">updated <time datetime="{{ article.modified.isoformat() }}">{{ article.modified | strftime(DEFAULT_DATE_FORMAT) }}</time></span>{% endif %}
     </p>
-    <h1 class="font-display text-4xl sm:text-5xl leading-tight">{{ article.title }}</h1>
+    <h1 class="font-display text-4xl sm:text-5xl uppercase leading-[1.05]">{{ article.title }}</h1>
     {% if article.tags or article.repo or article.demo %}
-    <div class="mt-5 flex flex-wrap items-center gap-2">
+    <div class="mt-6 flex flex-wrap items-center gap-2">
       {% for tag in article.tags %}
-      <span class="badge badge-outline font-mono text-xs">{{ tag }}</span>
+      <span class="brut-border bg-base-200 px-2 py-0.5 font-mono text-xs font-medium">{{ tag }}</span>
       {% endfor %}
       {% if article.repo %}
-      <a href="{{ article.repo }}" target="_blank" rel="noopener" class="btn btn-outline btn-xs font-mono">{{ ic.icon("github", "w-3.5 h-3.5") }} source</a>
+      <a href="{{ article.repo }}" target="_blank" rel="noopener" class="brut-border brut-press brut-shadow-sm inline-flex items-center gap-1.5 bg-base-100 px-2.5 py-1 font-mono text-xs font-semibold uppercase">{{ ic.icon("github", "w-3.5 h-3.5") }} source</a>
       {% endif %}
       {% if article.demo %}
-      <a href="{{ article.demo }}" target="_blank" rel="noopener" class="btn btn-outline btn-xs font-mono">{{ ic.icon("external", "w-3.5 h-3.5") }} demo</a>
+      <a href="{{ article.demo }}" target="_blank" rel="noopener" class="brut-border brut-press brut-shadow-sm inline-flex items-center gap-1.5 bg-base-100 px-2.5 py-1 font-mono text-xs font-semibold uppercase">{{ ic.icon("external", "w-3.5 h-3.5") }} demo</a>
       {% endif %}
     </div>
     {% endif %}
   </header>
 
-  <div class="prose prose-lg max-w-none">
+  <div class="prose prose-lg prose-invert max-w-none prose-headings:font-display prose-headings:uppercase prose-a:decoration-2 prose-a:underline-offset-2">
     {{ article.content }}
   </div>
 </article>

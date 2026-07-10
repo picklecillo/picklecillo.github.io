@@ -6,11 +6,11 @@
 
 {% block content %}
 <section class="mx-auto max-w-5xl px-4 sm:px-6 py-16 sm:py-20">
-  <p class="section-label mb-2">~/{{ category.slug }}</p>
-  <h1 class="font-display text-5xl mb-4">
+  <p class="section-label mb-4">~/{{ category.slug }}</p>
+  <h1 class="font-display text-5xl sm:text-6xl uppercase mb-6">
     {% if category.slug == 'projects' %}Projects{% else %}Blog{% endif %}
   </h1>
-  <p class="text-base-content/70 mb-12 max-w-xl">
+  <p class="mb-14 max-w-xl text-lg leading-relaxed">
     {% if category.slug == 'projects' %}
     Things I&rsquo;ve built — side projects, tools, and experiments.
     {% else %}
@@ -19,48 +19,49 @@
   </p>
 
   {% if category.slug == 'projects' %}
-  <div class="grid gap-6 sm:grid-cols-2">
+  <div class="grid gap-8 sm:grid-cols-2">
     {% for article in articles %}
-    <article class="card border border-base-300 bg-base-100 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-lg">
-      <div class="card-body">
-        <div class="flex items-start justify-between">
-          <h2 class="card-title font-display text-2xl">
-            <a href="{{ SITEURL }}/{{ article.url }}" class="link link-hover">{{ article.title }}</a>
-          </h2>
-          <div class="flex gap-1 shrink-0">
-            {% if article.repo %}
-            <a href="{{ article.repo }}" target="_blank" rel="noopener" class="btn btn-ghost btn-square btn-sm" aria-label="Repository">{{ ic.icon("github", "w-4 h-4") }}</a>
-            {% endif %}
-            {% if article.demo %}
-            <a href="{{ article.demo }}" target="_blank" rel="noopener" class="btn btn-ghost btn-square btn-sm" aria-label="Live demo">{{ ic.icon("external", "w-4 h-4") }}</a>
-            {% endif %}
-          </div>
+    <article class="brut-border brut-shadow brut-press bg-base-100 flex flex-col">
+      <div class="flex items-center justify-between border-b-2 border-base-content bg-primary text-primary-content px-5 py-3">
+        <h2 class="font-display text-lg uppercase truncate">
+          <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title.split('—')[0].strip() }}</a>
+        </h2>
+        <div class="flex gap-2 shrink-0 ml-3">
+          {% if article.repo %}
+          <a href="{{ article.repo }}" target="_blank" rel="noopener" class="hover:-translate-y-0.5 transition-transform" aria-label="Repository">{{ ic.icon("github", "w-5 h-5") }}</a>
+          {% endif %}
+          {% if article.demo %}
+          <a href="{{ article.demo }}" target="_blank" rel="noopener" class="hover:-translate-y-0.5 transition-transform" aria-label="Live demo">{{ ic.icon("external", "w-5 h-5") }}</a>
+          {% endif %}
         </div>
-        <p class="text-base-content/80 leading-relaxed">{{ article.summary }}</p>
-        <div class="card-actions mt-2">
+      </div>
+      <div class="p-5 flex-1 flex flex-col gap-4">
+        <p class="leading-relaxed flex-1">{{ article.summary }}</p>
+        <div class="flex flex-wrap gap-2">
           {% for tag in article.tags %}
-          <span class="badge badge-outline font-mono text-xs">{{ tag }}</span>
+          <span class="brut-border bg-base-200 px-2 py-0.5 font-mono text-xs font-medium">{{ tag }}</span>
           {% endfor %}
         </div>
+        <a href="{{ SITEURL }}/{{ article.url }}" class="font-mono text-sm font-semibold uppercase underline decoration-2 underline-offset-4 hover:bg-secondary hover:text-secondary-content self-start">
+          read writeup →
+        </a>
       </div>
     </article>
     {% endfor %}
   </div>
   {% else %}
-  <ul class="divide-y divide-base-300 border-y border-base-300">
+  <div class="brut-border brut-shadow bg-base-100 divide-y-2 divide-base-content">
     {% for article in articles %}
-    <li>
-      <a href="{{ SITEURL }}/{{ article.url }}" class="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-6 transition-colors hover:bg-base-200/60 px-2 -mx-2">
-        <time class="font-mono text-xs text-base-content/60 sm:w-28 shrink-0">{{ article.date | strftime(DEFAULT_DATE_FORMAT) }}</time>
-        <span class="flex-1">
-          <span class="block text-xl font-medium group-hover:text-primary transition-colors">{{ article.title }}</span>
-          <span class="block mt-1 text-base-content/70">{{ article.summary | striptags }}</span>
-        </span>
-        <span class="hidden sm:block self-center text-base-content/40 group-hover:text-primary transition-colors">{{ ic.icon("arrow", "w-5 h-5") }}</span>
-      </a>
-    </li>
+    <a href="{{ SITEURL }}/{{ article.url }}" class="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 px-5 py-6 hover:bg-secondary hover:text-secondary-content">
+      <time class="font-mono text-xs font-semibold sm:w-28 shrink-0">{{ article.date | strftime(DEFAULT_DATE_FORMAT) }}</time>
+      <span class="flex-1">
+        <span class="block text-xl font-semibold">{{ article.title }}</span>
+        <span class="block mt-1 leading-relaxed">{{ article.summary | striptags }}</span>
+      </span>
+      <span class="hidden sm:block self-center group-hover:translate-x-1 transition-transform">{{ ic.icon("arrow", "w-5 h-5") }}</span>
+    </a>
     {% endfor %}
-  </ul>
+  </div>
   {% endif %}
 </section>
 {% endblock %}
