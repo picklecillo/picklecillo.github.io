@@ -13,7 +13,7 @@ EXTRA_PATH_METADATA = {
     "extra/favicon.ico": {"path": "favicon.ico"},
 }
 
-TIMEZONE = "America/Mexico_City"
+TIMEZONE = "America/Santiago"
 DEFAULT_LANG = "en"
 DEFAULT_DATE_FORMAT = "%b %d, %Y"
 
@@ -63,7 +63,7 @@ CURRENT_YEAR = date.today().year
 GITHUB_USERNAME = "picklecillo"
 
 # Create a form at https://formspree.io and paste its ID here (e.g. "mqkvyzab")
-FORMSPREE_ID = "YOUR_FORM_ID"
+FORMSPREE_ID = "xkoldeey"
 
 BIO = (
     "I'm a software engineer who enjoys building reliable backend systems, "
