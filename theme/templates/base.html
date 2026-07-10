@@ -1,0 +1,86 @@
+{% import 'icons.html' as ic %}<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ SITENAME }} — {{ SITESUBTITLE }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ BIO }}{% endblock %}">
+  <link rel="icon" href="{{ SITEURL }}/favicon.svg" type="image/svg+xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem("theme"); } catch (e) {}
+      var theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css">
+  {% if FEED_ALL_ATOM %}
+  <link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} — Atom feed" href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}">
+  {% endif %}
+</head>
+<body class="min-h-screen flex flex-col bg-base-100 text-base-content font-sans antialiased">
+
+  <header class="sticky top-0 z-50 border-b border-base-300 bg-base-100/90 backdrop-blur">
+    <nav class="navbar mx-auto max-w-5xl px-4 sm:px-6">
+      <div class="navbar-start">
+        <a href="{{ SITEURL }}/" class="font-mono text-lg font-medium tracking-tight hover:text-primary transition-colors">
+          <span class="text-primary">~/</span>{{ GITHUB_USERNAME }}
+        </a>
+      </div>
+      <div class="navbar-center hidden md:flex">
+        <ul class="menu menu-horizontal gap-1 font-mono text-sm">
+          <li><a href="{{ SITEURL }}/#experience">experience</a></li>
+          <li><a href="{{ SITEURL }}/#projects">projects</a></li>
+          <li><a href="{{ SITEURL }}/blog/">blog</a></li>
+          <li><a href="{{ SITEURL }}/#github">github</a></li>
+          <li><a href="{{ SITEURL }}/#contact">contact</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end gap-1">
+        <div class="dropdown dropdown-end md:hidden">
+          <button tabindex="0" class="btn btn-ghost btn-square" aria-label="Menu">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <ul tabindex="0" class="dropdown-content menu bg-base-100 border border-base-300 rounded-box z-50 mt-3 w-44 p-2 shadow-lg font-mono text-sm">
+            <li><a href="{{ SITEURL }}/#experience">experience</a></li>
+            <li><a href="{{ SITEURL }}/#projects">projects</a></li>
+            <li><a href="{{ SITEURL }}/blog/">blog</a></li>
+            <li><a href="{{ SITEURL }}/#github">github</a></li>
+            <li><a href="{{ SITEURL }}/#contact">contact</a></li>
+          </ul>
+        </div>
+        <label class="swap swap-rotate btn btn-ghost btn-square" aria-label="Toggle color theme">
+          <input type="checkbox" id="theme-toggle">
+          <span class="swap-on">{{ ic.icon("sun") }}</span>
+          <span class="swap-off">{{ ic.icon("moon") }}</span>
+        </label>
+      </div>
+    </nav>
+  </header>
+
+  <main class="flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="border-t border-base-300">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="font-mono text-sm text-base-content/60">
+        © {{ CURRENT_YEAR }} {{ AUTHOR }} · built with <a class="link link-hover text-primary" href="https://getpelican.com">pelican</a> + <a class="link link-hover text-primary" href="https://daisyui.com">daisyui</a>
+      </p>
+      <div class="flex gap-2">
+        {% for link in SOCIAL_LINKS %}
+        <a href="{{ link.url }}" class="btn btn-ghost btn-square btn-sm" aria-label="{{ link.name }}"{% if not link.url.startswith('mailto:') %} target="_blank" rel="noopener"{% endif %}>
+          {{ ic.icon(link.icon) }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ SITEURL }}/theme/js/theme.js"></script>
+</body>
+</html>

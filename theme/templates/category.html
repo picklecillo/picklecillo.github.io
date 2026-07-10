@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% import 'icons.html' as ic %}
+
+{% block title %}{{ category | capitalize }} — {{ SITENAME }}{% endblock %}
+{% block description %}{{ category | capitalize }} by {{ AUTHOR }}{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-5xl px-4 sm:px-6 py-16 sm:py-20">
+  <p class="section-label mb-2">~/{{ category.slug }}</p>
+  <h1 class="font-display text-5xl mb-4">
+    {% if category.slug == 'projects' %}Projects{% else %}Blog{% endif %}
+  </h1>
+  <p class="text-base-content/70 mb-12 max-w-xl">
+    {% if category.slug == 'projects' %}
+    Things I&rsquo;ve built — side projects, tools, and experiments.
+    {% else %}
+    Notes on software, engineering practice, and whatever else is on my mind.
+    {% endif %}
+  </p>
+
+  {% if category.slug == 'projects' %}
+  <div class="grid gap-6 sm:grid-cols-2">
+    {% for article in articles %}
+    <article class="card border border-base-300 bg-base-100 transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-lg">
+      <div class="card-body">
+        <div class="flex items-start justify-between">
+          <h2 class="card-title font-display text-2xl">
+            <a href="{{ SITEURL }}/{{ article.url }}" class="link link-hover">{{ article.title }}</a>
+          </h2>
+          <div class="flex gap-1 shrink-0">
+            {% if article.repo %}
+            <a href="{{ article.repo }}" target="_blank" rel="noopener" class="btn btn-ghost btn-square btn-sm" aria-label="Repository">{{ ic.icon("github", "w-4 h-4") }}</a>
+            {% endif %}
+            {% if article.demo %}
+            <a href="{{ article.demo }}" target="_blank" rel="noopener" class="btn btn-ghost btn-square btn-sm" aria-label="Live demo">{{ ic.icon("external", "w-4 h-4") }}</a>
+            {% endif %}
+          </div>
+        </div>
+        <p class="text-base-content/80 leading-relaxed">{{ article.summary }}</p>
+        <div class="card-actions mt-2">
+          {% for tag in article.tags %}
+          <span class="badge badge-outline font-mono text-xs">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <ul class="divide-y divide-base-300 border-y border-base-300">
+    {% for article in articles %}
+    <li>
+      <a href="{{ SITEURL }}/{{ article.url }}" class="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-6 transition-colors hover:bg-base-200/60 px-2 -mx-2">
+        <time class="font-mono text-xs text-base-content/60 sm:w-28 shrink-0">{{ article.date | strftime(DEFAULT_DATE_FORMAT) }}</time>
+        <span class="flex-1">
+          <span class="block text-xl font-medium group-hover:text-primary transition-colors">{{ article.title }}</span>
+          <span class="block mt-1 text-base-content/70">{{ article.summary | striptags }}</span>
+        </span>
+        <span class="hidden sm:block self-center text-base-content/40 group-hover:text-primary transition-colors">{{ ic.icon("arrow", "w-5 h-5") }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+{% endblock %}

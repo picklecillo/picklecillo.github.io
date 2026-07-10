@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Pelican output
+output/
+
+# Node
+node_modules/
+
+# Built CSS (generated from src/css/main.css)
+theme/static/css/main.css
+
+# OS
+.DS_Store

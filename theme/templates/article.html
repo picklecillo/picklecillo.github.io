@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% import 'icons.html' as ic %}
+
+{% block title %}{{ article.title }} — {{ SITENAME }}{% endblock %}
+{% block description %}{{ article.summary | striptags }}{% endblock %}
+
+{% block content %}
+<article class="mx-auto max-w-3xl px-4 sm:px-6 py-16 sm:py-20">
+  <a href="{{ SITEURL }}/{{ article.category.slug }}/" class="btn btn-ghost btn-sm font-mono text-primary mb-8 -ml-3">
+    <span class="rotate-180 inline-block">{{ ic.icon("arrow", "w-4 h-4") }}</span> {{ article.category.slug }}
+  </a>
+
+  <header class="mb-10">
+    <p class="font-mono text-xs text-base-content/60 mb-3">
+      <time datetime="{{ article.date.isoformat() }}">{{ article.date | strftime(DEFAULT_DATE_FORMAT) }}</time>
+      {% if article.modified %} · updated <time datetime="{{ article.modified.isoformat() }}">{{ article.modified | strftime(DEFAULT_DATE_FORMAT) }}</time>{% endif %}
+    </p>
+    <h1 class="font-display text-4xl sm:text-5xl leading-tight">{{ article.title }}</h1>
+    {% if article.tags or article.repo or article.demo %}
+    <div class="mt-5 flex flex-wrap items-center gap-2">
+      {% for tag in article.tags %}
+      <span class="badge badge-outline font-mono text-xs">{{ tag }}</span>
+      {% endfor %}
+      {% if article.repo %}
+      <a href="{{ article.repo }}" target="_blank" rel="noopener" class="btn btn-outline btn-xs font-mono">{{ ic.icon("github", "w-3.5 h-3.5") }} source</a>
+      {% endif %}
+      {% if article.demo %}
+      <a href="{{ article.demo }}" target="_blank" rel="noopener" class="btn btn-outline btn-xs font-mono">{{ ic.icon("external", "w-3.5 h-3.5") }} demo</a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="prose prose-lg max-w-none">
+    {{ article.content }}
+  </div>
+</article>
+{% endblock %}
