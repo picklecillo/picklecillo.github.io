@@ -71,10 +71,10 @@ and put its ID in `FORMSPREE_ID` in `pelicanconf.py`.
 Pushing to `main` triggers `.github/workflows/deploy.yml`: it builds the CSS and
 site, then publishes `output/` to GitHub Pages.
 
-One-time setup in the GitHub repo: **Settings → Pages → Source → GitHub Actions**.
+Pages is configured with **GitHub Actions** as the source (Settings → Pages).
 
-The production URL is set in `publishconf.py` (`SITEURL`). If this repo is
-renamed or moved to `picklecillo.github.io`, update it there.
+The production URL (`https://picklecillo.github.io`) is set in `publishconf.py`
+(`SITEURL`).
 
 ## Theming
 
