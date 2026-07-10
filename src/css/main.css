@@ -132,16 +132,30 @@ a.hl-yellow:hover {
 
 /* --- Code blocks --------------------------------------------------------- */
 
-/* Pygments tokens on the typography plugin's dark pre background */
-.highlight .k, .highlight .kn, .highlight .kd, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .ow { color: oklch(78% 0.15 300); }
-.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sd, .highlight .se, .highlight .si, .highlight .sx { color: oklch(80% 0.16 148); }
-.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .ch { color: oklch(62% 0.02 260); font-style: italic; }
-.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh, .highlight .mo { color: oklch(80% 0.13 55); }
-.highlight .nf, .highlight .nc, .highlight .nd, .highlight .fm, .highlight .nb { color: oklch(78% 0.11 235); }
-.highlight .gp { color: oklch(62% 0.02 260); user-select: none; }
+/* Pygments tokens: Monokai, carried over from the old pelican-svbtle site */
+.highlight { color: #f8f8f2; }
+.highlight .hll { background-color: #49483e; }
+.highlight .c, .highlight .ch, .highlight .cm, .highlight .cp, .highlight .cpf,
+.highlight .c1, .highlight .cs, .highlight .gu { color: #75715e; }
+.highlight .err { color: #960050; background-color: #1e0010; }
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kp, .highlight .kr,
+.highlight .kt, .highlight .no, .highlight .go { color: #66d9ef; }
+.highlight .l, .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh,
+.highlight .mi, .highlight .mo, .highlight .il, .highlight .se { color: #ae81ff; }
+.highlight .o, .highlight .ow, .highlight .kn, .highlight .nt, .highlight .gd { color: #f92672; }
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl,
+.highlight .sd, .highlight .s2, .highlight .sh, .highlight .si, .highlight .sx,
+.highlight .sr, .highlight .s1, .highlight .ss, .highlight .ld { color: #e6db74; }
+.highlight .na, .highlight .nc, .highlight .nd, .highlight .ne, .highlight .nf,
+.highlight .nx, .highlight .fm, .highlight .gi { color: #a6e22e; }
+.highlight .ge { font-style: italic; }
+.highlight .gs { font-weight: bold; }
+.highlight .gp { color: #f92672; font-weight: bold; user-select: none; }
 
-/* Square-cornered, hard-edged code blocks inside prose */
+/* Square-cornered, hard-edged code blocks inside prose, on Monokai's ground */
 .prose pre {
+  background-color: #272822;
+  color: #f8f8f2;
   border: 2px solid var(--color-base-content);
   border-radius: 0;
   box-shadow: 5px 5px 0 0 var(--color-base-content);
