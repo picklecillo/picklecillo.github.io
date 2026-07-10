@@ -18,7 +18,8 @@
           {{ AUTHOR.split(' ')[1:] | join(' ') }}<span class="text-primary">.</span>
         </h1>
         <p class="mt-4 font-mono text-lg font-semibold uppercase tracking-wide">
-          <span class="hl">software engineer</span>
+          <span class="hl">{{ ROLE | lower }}</span>
+          <span class="ml-2 text-sm normal-case font-normal text-base-content/70">{{ LOCATION }}</span>
         </p>
         <p class="mt-6 max-w-xl text-lg leading-relaxed">
           {{ BIO }}
@@ -60,7 +61,11 @@
             <time class="font-mono text-xs font-semibold bg-base-content text-base-100 px-2 py-1">{{ job.start }} — {{ job.end }}</time>
           </div>
           <p class="mt-1 font-mono font-medium">
+            {% if job.url %}
             @ <a href="{{ job.url }}" target="_blank" rel="noopener" class="hl-yellow">{{ job.company }}</a>
+            {% else %}
+            @ <span class="hl-yellow">{{ job.company }}</span>
+            {% endif %}
           </p>
           <p class="mt-4 leading-relaxed">{{ job.summary }}</p>
           <div class="mt-5 flex flex-wrap gap-2">
