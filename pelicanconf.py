@@ -8,7 +8,7 @@ SITEURL = ""
 PATH = "content"
 ARTICLE_PATHS = ["blog", "projects"]
 PAGE_PATHS = ["pages"]
-STATIC_PATHS = ["extra"]
+STATIC_PATHS = ["extra", "images"]
 EXTRA_PATH_METADATA = {
     "extra/favicon.ico": {"path": "favicon.ico"},
 }
