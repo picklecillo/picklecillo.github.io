@@ -3,6 +3,7 @@ Date: 2026-03-01
 Tags: django, htmx, claude-api, fly.io
 Summary: Full-stack AI career toolkit built and deployed in 3 days. ATS scoring against job descriptions, batch multi-JD comparison, interactive per-role resume coaching, and resume export as structured RenderCV YAML with PDF download.
 Featured: true
+Repo: https://github.com/picklecillo/bettercv
 Demo: https://cvora.xyz
 
 ## What it does
