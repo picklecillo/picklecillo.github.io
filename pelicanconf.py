@@ -11,6 +11,7 @@ PAGE_PATHS = ["pages"]
 STATIC_PATHS = ["extra", "images"]
 EXTRA_PATH_METADATA = {
     "extra/favicon.ico": {"path": "favicon.ico"},
+    "extra/CNAME": {"path": "CNAME"},
 }
 
 TIMEZONE = "America/Santiago"
