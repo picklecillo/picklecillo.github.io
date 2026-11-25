@@ -50,6 +50,34 @@
     <h2 class="font-display text-4xl sm:text-5xl uppercase mb-14">What I keep<br>ending up doing</h2>
 
     <div class="space-y-10">
+      {% if EXPERIENCE_NOW %}
+      <article class="brut-border brut-shadow bg-base-100">
+        <div class="flex items-center gap-3 border-b-2 border-base-content bg-secondary text-secondary-content px-5 sm:px-7 py-3">
+          <span class="relative flex h-3 w-3" aria-hidden="true">
+            <span class="absolute inline-flex h-full w-full animate-ping bg-secondary-content opacity-60 motion-reduce:hidden"></span>
+            <span class="relative inline-flex h-3 w-3 bg-secondary-content"></span>
+          </span>
+          <h3 class="font-display text-xl sm:text-2xl uppercase">Right now</h3>
+        </div>
+        <ul class="divide-y-2 divide-base-content/20">
+          {% for item in EXPERIENCE_NOW %}
+          <li class="grid sm:grid-cols-[10rem_1fr] gap-2 sm:gap-6 px-5 sm:px-7 py-5">
+            <p class="font-mono text-sm font-medium">
+              <a href="{{ item.url }}" target="_blank" rel="noopener" class="hl-yellow">{{ item.company }}</a>
+              <span class="block mt-1 text-xs text-base-content/60">{{ item.years }}</span>
+            </p>
+            <div>
+              <p class="leading-relaxed">{{ item.text }}</p>
+              {% if item.more %}
+              <a href="{{ SITEURL }}/{{ item.more }}" class="mt-2 inline-block font-mono text-sm font-semibold uppercase underline decoration-2 underline-offset-4 hover:bg-secondary hover:text-secondary-content">read writeup &rarr;</a>
+              {% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endif %}
+
       {% for theme in EXPERIENCE_THEMES %}
       <article class="brut-border brut-shadow bg-base-100">
         <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-base-content bg-primary text-primary-content px-5 sm:px-7 py-3">

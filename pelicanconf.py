@@ -70,15 +70,41 @@ BIO = (
     "Full stack engineer with 10+ years across Python, JavaScript, and cloud "
     "infrastructure. Known for deep curiosity, fast learning, and being the "
     "person teammates turn to when problems get hard. Equally at home designing "
-    "backend systems from scratch or diving into complex existing codebases."
+    "backend systems from scratch or diving into complex existing codebases. "
+    "Now running Pickle Labs, a small software studio in Valparaíso."
 )
 
-ROLE = "Full Stack Engineer"
+ROLE = "Engineer & founder"
 LOCATION = "Valparaíso, Chile"
 
 SOCIAL_LINKS = [
     {"name": "GitHub", "url": "https://github.com/picklecillo", "icon": "github"},
     {"name": "LinkedIn", "url": "https://www.linkedin.com/in/gaelespinosa/", "icon": "linkedin"},
+]
+
+# What I'm doing now, shown above the themes.
+EXPERIENCE_NOW = [
+    {
+        "company": "Pickle Labs",
+        "url": "https://picklelabs.cl",
+        "years": "2026–now",
+        "text": (
+            "Founded a small software studio in Valparaíso. Custom web apps, "
+            "backend and cloud work, and technical consulting. Same work as "
+            "always, my name on the door this time."
+        ),
+    },
+    {
+        "company": "Fichario",
+        "url": "https://fichario.cl",
+        "years": "2026–now",
+        "text": (
+            "Our first product: encrypted, offline-first clinical records for therapists "
+            "in Chile, built ahead of the new data protection law (Ley 21.719). "
+            "The hard part is security a non-technical user can't get wrong."
+        ),
+        "more": "projects/fichario-encrypted-clinical-records-for-therapists/",
+    },
 ]
 
 # Experience grouped by theme. A job can show up under more than one theme.
@@ -189,6 +215,7 @@ EXPERIENCE_THEMES = [
 
 # Compact chronology, shown as "the short version" under the themes.
 EXPERIENCE = [
+    {"role": "Founder", "company": "Pickle Labs", "years": "2026–now"},
     {"role": "Senior Software Engineer", "company": "tvScientific", "years": "2023–25"},
     {"role": "Technical Lead", "company": "Unholster", "years": "2022–23"},
     {"role": "Software Engineer", "company": "BitterSweet", "years": "2021–22"},
