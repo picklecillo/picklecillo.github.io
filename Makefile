@@ -1,6 +1,7 @@
 PY ?= python3
 PELICAN ?= pelican
 PELICANOPTS =
+VENV ?= .venv
 
 BASEDIR = $(CURDIR)
 INPUTDIR = $(BASEDIR)/content
@@ -12,6 +13,7 @@ help:
 	@echo 'Makefile for the portfolio site'
 	@echo ''
 	@echo 'Usage:'
+	@echo '   make venv           create $(VENV) and install Python deps'
 	@echo '   make css            build Tailwind CSS once'
 	@echo '   make css-watch      rebuild Tailwind CSS on change'
 	@echo '   make html           build the site with dev settings'
@@ -20,6 +22,16 @@ help:
 	@echo '   make publish        build the site with production settings'
 	@echo '   make clean          remove the generated output'
 	@echo ''
+
+venv: $(VENV)/.installed
+
+# Re-runs only when requirements.txt changes. Running venv over an existing
+# directory also repairs one that is missing pip.
+$(VENV)/.installed: requirements.txt
+	$(PY) -m venv $(VENV)
+	$(VENV)/bin/python -m pip install --upgrade pip
+	$(VENV)/bin/python -m pip install -r requirements.txt
+	touch $@
 
 css:
 	npm run build:css
@@ -42,4 +54,4 @@ publish: css
 clean:
 	rm -rf $(OUTPUTDIR)
 
-.PHONY: help css css-watch html serve devserver publish clean
+.PHONY: help venv css css-watch html serve devserver publish clean
