@@ -2,7 +2,7 @@ from datetime import date
 
 AUTHOR = "Gael Espinosa"
 SITENAME = "Gael Espinosa"
-SITESUBTITLE = "Full Stack Engineer"
+SITESUBTITLE = "Generalist Software Engineer"
 SITEURL = ""
 
 PATH = "content"
@@ -67,14 +67,14 @@ GITHUB_USERNAME = "picklecillo"
 FORMSPREE_ID = "xkoldeey"
 
 BIO = (
-    "Full stack engineer with 10+ years across Python, JavaScript, and cloud "
-    "infrastructure. Known for deep curiosity, fast learning, and being the "
-    "person teammates turn to when problems get hard. Equally at home designing "
+    "Generalist software engineer with 10+ years across the stack: Python, "
+    "JavaScript, cloud infrastructure, and lately Flutter. Known for deep curiosity and fast learning. I try to "
+    "leave every team better than I found it. Equally at home designing "
     "backend systems from scratch or diving into complex existing codebases. "
     "Now running Pickle Labs, a small software studio in Valparaíso."
 )
 
-ROLE = "Engineer & founder"
+ROLE = "Software engineer & founder"
 LOCATION = "Valparaíso, Chile"
 
 SOCIAL_LINKS = [
