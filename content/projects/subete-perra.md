@@ -2,7 +2,6 @@ Title: Súbete Perra — local event discovery for Chile
 Date: 2026-06-01
 Tags: django, postgresql, tailwind, fly.io
 Summary: A free event discovery platform for Chile — find what's happening near you, or publish your own event with zero friction. Django 6 on Python 3.13, PostgreSQL, deployed on Fly.io.
-Featured: true
 Demo: https://subeteperra.cl
 
 ## What it is
