@@ -81,104 +81,119 @@ SOCIAL_LINKS = [
     {"name": "LinkedIn", "url": "https://www.linkedin.com/in/gaelespinosa/", "icon": "linkedin"},
 ]
 
+# Experience grouped by theme. A job can show up under more than one theme.
+EXPERIENCE_THEMES = [
+    {
+        "title": "Data that can't be wrong",
+        "tags": ["Python", "Data pipelines", "AWS", "GCP"],
+        "items": [
+            {
+                "company": "Unholster",
+                "url": "https://unholster.com",
+                "years": "2016–18",
+                "text": (
+                    "Replaced hand-run financial calculations for Chile's national "
+                    "power grid coordinator. Zero tolerance for being off by a peso."
+                ),
+                "lesson": "When the numbers are money, boring and provable beats clever.",
+            },
+            {
+                "company": "Unholster",
+                "url": "https://unholster.com",
+                "years": "2022–23",
+                "text": (
+                    "Designed a near real-time medical data pipeline under HIPAA. "
+                    "Fast was easy. Fast and compliant was the job."
+                ),
+                "lesson": "Compliance is a design input, not a checklist at the end.",
+            },
+            {
+                "company": "BitterSweet",
+                "years": "2021–22",
+                "text": (
+                    "Turned data scientists' research notebooks into production "
+                    "features for oilfield resource optimization."
+                ),
+                "lesson": "A notebook that works once is a hypothesis.",
+            },
+            {
+                "company": "Nuwit",
+                "years": "2015–16",
+                "text": (
+                    "Built a TF-IDF recommender for a retail mall's discovery app, "
+                    "alongside its ticketing and parking systems."
+                ),
+                "lesson": "Simple models, well applied, go a long way.",
+            },
+        ],
+    },
+    {
+        "title": "Ground other teams stand on",
+        "tags": ["TypeScript", "React", "CI/CD", "Jenkins"],
+        "items": [
+            {
+                "company": "ThoughtWorks",
+                "url": "https://www.thoughtworks.com",
+                "years": "2018–20",
+                "text": (
+                    "An airline's CI/CD fell over every week. I rebuilt the Jenkins "
+                    "setup and provisioning so parallel feature teams could ship "
+                    "without waiting on each other. It stopped falling over."
+                ),
+                "lesson": "Good infra is invisible. That's the point.",
+            },
+            {
+                "company": "tvScientific",
+                "url": "https://www.tvscientific.com",
+                "years": "2023–25",
+                "text": (
+                    "Untangled an adtech backend, laid the foundations for a new core "
+                    "frontend app, and pushed testing left so bugs died in PRs, not prod."
+                ),
+                "lesson": "Shortcuts in shared code get paid back by someone else, with interest.",
+            },
+        ],
+    },
+    {
+        "title": "Owning the whole thing",
+        "tags": ["System design", "Mentoring", "Web & mobile"],
+        "items": [
+            {
+                "company": "QWERTY",
+                "years": "2012–15",
+                "text": (
+                    "Co-founded a small consultancy building web and mobile apps for "
+                    "10+ clients in energy, legal, and small business. It's still running."
+                ),
+                "lesson": "Clients don't buy code. They buy the problem going away.",
+            },
+            {
+                "company": "BitterSweet",
+                "years": "2021–22",
+                "text": "One of two engineers. Infra, APIs, UI: if it broke, it was ours.",
+                "lesson": "Owning everything teaches you which parts actually matter.",
+            },
+            {
+                "company": "Unholster",
+                "url": "https://unholster.com",
+                "years": "2022–23",
+                "text": (
+                    "Tech lead across several cloud products: system design, delivery, "
+                    "and mentoring."
+                ),
+                "lesson": "The job shifted from writing the best code to making the team's code better.",
+            },
+        ],
+    },
+]
+
+# Compact chronology, shown as "the short version" under the themes.
 EXPERIENCE = [
-    {
-        "role": "Senior Software Engineer",
-        "company": "tvScientific",
-        "url": "https://www.tvscientific.com",
-        "start": "May 2023",
-        "end": "Sep 2025",
-        "summary": (
-            "Lead full stack engineer on a fast-paced adtech SaaS platform, owning "
-            "backend architecture and frontend foundations across a major codebase "
-            "overhaul. Led a backend refactor that reduced system complexity and "
-            "improved performance, built the foundational architecture for a new "
-            "core frontend app, and drove shift-left practices to catch bugs "
-            "earlier in the pipeline."
-        ),
-        "stack": ["Python", "TypeScript", "React", "AWS"],
-    },
-    {
-        "role": "Technical Lead",
-        "company": "Unholster",
-        "url": "https://unholster.com",
-        "start": "Feb 2022",
-        "end": "May 2023",
-        "summary": (
-            "Technical lead for multiple cloud-native SaaS products on AWS and GCP, "
-            "responsible for system design, delivery, and team mentoring. Designed "
-            "and led the implementation of a scalable near real-time HIPAA-compliant "
-            "medical data ETL pipeline and built a serverless organizational "
-            "governance platform."
-        ),
-        "stack": ["Python", "AWS", "GCP", "Serverless"],
-    },
-    {
-        "role": "Software Engineer",
-        "company": "BitterSweet",
-        "start": "Jan 2021",
-        "end": "Feb 2022",
-        "summary": (
-            "One of two engineers with full technical ownership over a data science "
-            "platform for the oil and gas industry. Translated research notebooks "
-            "into production-ready features and designed REST APIs, covering "
-            "everything from infrastructure to UI for an oilfield resource "
-            "optimization product."
-        ),
-        "stack": ["Python", "REST APIs", "Data science"],
-    },
-    {
-        "role": "Consultant — Developer",
-        "company": "ThoughtWorks",
-        "url": "https://www.thoughtworks.com",
-        "start": "Mar 2018",
-        "end": "Dec 2020",
-        "summary": (
-            "Delivered CI/CD infrastructure and resource provisioning at scale for "
-            "a major airline, enabling multiple parallel feature teams to develop "
-            "and ship independently. Eliminated weekly CI/CD infrastructure "
-            "failures by modernizing legacy Jenkins instances."
-        ),
-        "stack": ["CI/CD", "Jenkins", "DevOps"],
-    },
-    {
-        "role": "Software Engineer",
-        "company": "Unholster",
-        "url": "https://unholster.com",
-        "start": "Feb 2016",
-        "end": "Mar 2018",
-        "summary": (
-            "Full stack engineer delivering mission-critical software for Chile's "
-            "national power grid coordinator. Automated manual financial "
-            "calculations with zero-tolerance accuracy requirements and built web "
-            "platforms, real-time data processing pipelines, and reporting tools "
-            "that eliminated error-prone manual processes."
-        ),
-        "stack": ["Python", "Data pipelines", "Integrations"],
-    },
-    {
-        "role": "Software Engineer",
-        "company": "Nuwit",
-        "start": "Jan 2015",
-        "end": "Feb 2016",
-        "summary": (
-            "Backend engineer building customer-facing web applications for a major "
-            "retail mall — discovery, ticketing, and parking systems. Implemented a "
-            "TF-IDF-based recommendation engine for similar product suggestions."
-        ),
-        "stack": ["Java", "Python", "NoSQL"],
-    },
-    {
-        "role": "Software Engineer & Founder",
-        "company": "QWERTY",
-        "start": "Mar 2012",
-        "end": "Dec 2015",
-        "summary": (
-            "Co-founded a software consultancy delivering web and mobile solutions "
-            "across energy, legal, and small business sectors. Grew the client base "
-            "to 10+ — the consultancy continues operating today — and established "
-            "its core technical infrastructure and development processes."
-        ),
-        "stack": ["PHP", "WordPress", "Web & mobile"],
-    },
+    {"role": "Senior Software Engineer", "company": "tvScientific", "years": "2023–25"},
+    {"role": "Technical Lead", "company": "Unholster", "years": "2022–23"},
+    {"role": "Software Engineer", "company": "BitterSweet", "years": "2021–22"},
+    {"role": "Consultant — Developer", "company": "ThoughtWorks", "years": "2018–20"},
+    {"role": "Software Engineer", "company": "Unholster", "years": "2016–18"},
+    {"role": "Software Engineer", "company": "Nuwit", "years": "2015–16"},
+    {"role": "Co-founder", "company": "QWERTY", "years": "2012–15"},
 ]

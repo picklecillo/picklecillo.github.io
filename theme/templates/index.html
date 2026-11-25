@@ -47,36 +47,54 @@
 <section id="experience" class="scroll-mt-20 border-b-[3px] border-base-content bg-base-200">
   <div class="mx-auto max-w-5xl px-4 sm:px-6 py-20">
     <p class="section-label mb-4">01 / experience</p>
-    <h2 class="font-display text-4xl sm:text-5xl uppercase mb-14">Where I&rsquo;ve<br>worked</h2>
+    <h2 class="font-display text-4xl sm:text-5xl uppercase mb-14">What I keep<br>ending up doing</h2>
 
-    <div class="space-y-8">
-      {% for job in EXPERIENCE %}
-      <div class="grid grid-cols-[auto_1fr] gap-5 sm:gap-8">
-        <div class="font-display text-4xl sm:text-6xl text-base-content/15 select-none leading-none pt-4" aria-hidden="true">
-          {{ "%02d" | format(loop.index) }}
-        </div>
-        <article class="brut-border brut-shadow bg-base-100 p-6 sm:p-7">
-          <div class="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 class="font-display text-xl sm:text-2xl uppercase">{{ job.role }}</h3>
-            <time class="font-mono text-xs font-semibold bg-base-content text-base-100 px-2 py-1">{{ job.start }} — {{ job.end }}</time>
-          </div>
-          <p class="mt-1 font-mono font-medium">
-            {% if job.url %}
-            @ <a href="{{ job.url }}" target="_blank" rel="noopener" class="hl-yellow">{{ job.company }}</a>
-            {% else %}
-            @ <span class="hl-yellow">{{ job.company }}</span>
-            {% endif %}
-          </p>
-          <p class="mt-4 leading-relaxed">{{ job.summary }}</p>
-          <div class="mt-5 flex flex-wrap gap-2">
-            {% for tech in job.stack %}
-            <span class="brut-border bg-base-200 px-2 py-0.5 font-mono text-xs font-medium">{{ tech }}</span>
+    <div class="space-y-10">
+      {% for theme in EXPERIENCE_THEMES %}
+      <article class="brut-border brut-shadow bg-base-100">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-base-content bg-primary text-primary-content px-5 sm:px-7 py-3">
+          <h3 class="font-display text-xl sm:text-2xl uppercase">{{ theme.title }}</h3>
+          <div class="flex flex-wrap gap-2">
+            {% for tech in theme.tags %}
+            <span class="border-2 border-primary-content px-2 py-0.5 font-mono text-xs font-medium">{{ tech }}</span>
             {% endfor %}
           </div>
-        </article>
-      </div>
+        </div>
+        <ul class="divide-y-2 divide-base-content/20">
+          {% for item in theme["items"] %}
+          <li class="grid sm:grid-cols-[10rem_1fr] gap-2 sm:gap-6 px-5 sm:px-7 py-5">
+            <p class="font-mono text-sm font-medium">
+              {% if item.url %}
+              <a href="{{ item.url }}" target="_blank" rel="noopener" class="hl-yellow">{{ item.company }}</a>
+              {% else %}
+              <span class="hl-yellow">{{ item.company }}</span>
+              {% endif %}
+              <span class="block mt-1 text-xs text-base-content/60">{{ item.years }}</span>
+            </p>
+            <div>
+              <p class="leading-relaxed">{{ item.text }}</p>
+              <p class="mt-2 font-mono text-sm text-base-content/70">&rarr; {{ item.lesson }}</p>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </article>
       {% endfor %}
     </div>
+
+    <details class="mt-10 group">
+      <summary class="cursor-pointer select-none font-mono text-sm font-semibold uppercase underline decoration-2 underline-offset-4 hover:bg-secondary hover:text-secondary-content inline-block">
+        the short version
+      </summary>
+      <ol class="mt-5 brut-border bg-base-100 divide-y-2 divide-base-content/20 font-mono text-sm">
+        {% for job in EXPERIENCE %}
+        <li class="flex flex-wrap justify-between gap-2 px-5 py-3">
+          <span>{{ job.role }} <span class="text-base-content/60">@</span> {{ job.company }}</span>
+          <span class="text-base-content/60">{{ job.years }}</span>
+        </li>
+        {% endfor %}
+      </ol>
+    </details>
   </div>
 </section>
 
